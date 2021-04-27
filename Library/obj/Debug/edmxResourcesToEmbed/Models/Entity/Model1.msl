@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LIBRARYModelStoreContainer" CdmEntityContainer="LIBRARYEntities">
+    <EntitySetMapping Name="ACTIONs">
+      <EntityTypeMapping TypeName="LIBRARYModel.ACTION">
+        <MappingFragment StoreEntitySet="ACTION">
+          <ScalarProperty Name="ACTION_ID" ColumnName="ACTION_ID" />
+          <ScalarProperty Name="BOOK" ColumnName="BOOK" />
+          <ScalarProperty Name="MEMBER" ColumnName="MEMBER" />
+          <ScalarProperty Name="PERSONNEL" ColumnName="PERSONNEL" />
+          <ScalarProperty Name="SHIP_DATE" ColumnName="SHIP_DATE" />
+          <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTHORs">
+      <EntityTypeMapping TypeName="LIBRARYModel.AUTHOR">
+        <MappingFragment StoreEntitySet="AUTHOR">
+          <ScalarProperty Name="AUTHOR_ID" ColumnName="AUTHOR_ID" />
+          <ScalarProperty Name="AUTHOR_NAME" ColumnName="AUTHOR_NAME" />
+          <ScalarProperty Name="AUTHOR_SURNAME" ColumnName="AUTHOR_SURNAME" />
+          <ScalarProperty Name="DETAIL" ColumnName="DETAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKs">
+      <EntityTypeMapping TypeName="LIBRARYModel.BOOK">
+        <MappingFragment StoreEntitySet="BOOK">
+          <ScalarProperty Name="BOOK_ID" ColumnName="BOOK_ID" />
+          <ScalarProperty Name="BOOK_NAME" ColumnName="BOOK_NAME" />
+          <ScalarProperty Name="BOOK_CAT" ColumnName="BOOK_CAT" />
+          <ScalarProperty Name="AUTHOR" ColumnName="AUTHOR" />
+          <ScalarProperty Name="EDITION" ColumnName="EDITION" />
+          <ScalarProperty Name="PUBLISER" ColumnName="PUBLISER" />
+          <ScalarProperty Name="PAGE" ColumnName="PAGE" />
+          <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORies">
+      <EntityTypeMapping TypeName="LIBRARYModel.CATEGORY">
+        <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+          <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEMBERs">
+      <EntityTypeMapping TypeName="LIBRARYModel.MEMBER">
+        <MappingFragment StoreEntitySet="MEMBER">
+          <ScalarProperty Name="MEMBER_ID" ColumnName="MEMBER_ID" />
+          <ScalarProperty Name="MEMBER_NAME" ColumnName="MEMBER_NAME" />
+          <ScalarProperty Name="MEMBER_SURNAME" ColumnName="MEMBER_SURNAME" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="SCHOOL" ColumnName="SCHOOL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAY_DESK">
+      <EntityTypeMapping TypeName="LIBRARYModel.PAY_DESK">
+        <MappingFragment StoreEntitySet="PAY_DESK">
+          <ScalarProperty Name="PAY_DESK_ID" ColumnName="PAY_DESK_ID" />
+          <ScalarProperty Name="MONTH" ColumnName="MONTH" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONELs">
+      <EntityTypeMapping TypeName="LIBRARYModel.PERSONEL">
+        <MappingFragment StoreEntitySet="PERSONEL">
+          <ScalarProperty Name="PERSONEL_ID" ColumnName="PERSONEL_ID" />
+          <ScalarProperty Name="PERSONEL_NAME" ColumnName="PERSONEL_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUNISHMENTs">
+      <EntityTypeMapping TypeName="LIBRARYModel.PUNISHMENT">
+        <MappingFragment StoreEntitySet="PUNISHMENT">
+          <ScalarProperty Name="PUNISMENT_ID" ColumnName="PUNISMENT_ID" />
+          <ScalarProperty Name="MEMBER" ColumnName="MEMBER" />
+          <ScalarProperty Name="START" ColumnName="START" />
+          <ScalarProperty Name="FINISH" ColumnName="FINISH" />
+          <ScalarProperty Name="MONEY" ColumnName="MONEY" />
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LIBRARYModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

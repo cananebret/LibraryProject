@@ -1,0 +1,43 @@
+﻿@using Library.Models.Entity
+@model List<BOOK>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>Kitaplar</h2>
+<div style="margin-top:15px; margin-bottom:15px;">
+    <input type="text" class="form-control" placeholder="Kitap Ara"/>
+</div>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kitap Adı</th>
+        <th>Kitap Yazarı</th>
+        <th>Kategorisi</th>
+        <th>Basım Yılı</th>
+        <th>Yayınevi</th>
+        <th>Sayfa</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.BOOK_ID</td>
+            <td>@b.BOOK_NAME</td>
+            <td>@b.AUTHOR1.AUTHOR_NAME  @b.AUTHOR1.AUTHOR_SURNAME</td>
+            <td>@b.CATEGORY.CATEGORY_NAME</td>
+            <td>@b.EDITION</td>
+            <td>@b.PUBLISER</td>
+            <td>@b.PAGE</td>
+            <td>@b.IS_STATUS</td>
+            <td>@Html.ActionLink("Sil", "BookDel", new { id = b.BOOK_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
+            <td><a href="/Book/BookFind/@b.BOOK_ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Book/BookAdd/" class="btn btn-primary">Yeni Kitap Ekle</a>

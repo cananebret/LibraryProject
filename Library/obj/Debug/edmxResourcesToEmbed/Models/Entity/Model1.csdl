@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LIBRARYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACTION">
+    <Key>
+      <PropertyRef Name="ACTION_ID" />
+    </Key>
+    <Property Name="ACTION_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BOOK" Type="Int32" />
+    <Property Name="MEMBER" Type="Int32" />
+    <Property Name="PERSONNEL" Type="Int32" />
+    <Property Name="SHIP_DATE" Type="DateTime" Precision="3" />
+    <Property Name="RETURN_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="BOOK1" Relationship="Self.FK_ACTION_BOOK" FromRole="ACTION" ToRole="BOOK" />
+    <NavigationProperty Name="MEMBER1" Relationship="Self.FK_ACTION_MEMBER" FromRole="ACTION" ToRole="MEMBER" />
+    <NavigationProperty Name="PUNISHMENTs" Relationship="Self.FK_PUNISHMENT_ACTION" FromRole="ACTION" ToRole="PUNISHMENT" />
+  </EntityType>
+  <EntityType Name="AUTHOR">
+    <Key>
+      <PropertyRef Name="AUTHOR_ID" />
+    </Key>
+    <Property Name="AUTHOR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AUTHOR_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AUTHOR_SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DETAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BOOKs" Relationship="Self.FK_BOOK_AUTHOR" FromRole="AUTHOR" ToRole="BOOK" />
+  </EntityType>
+  <EntityType Name="BOOK">
+    <Key>
+      <PropertyRef Name="BOOK_ID" />
+    </Key>
+    <Property Name="BOOK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BOOK_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BOOK_CAT" Type="Int32" />
+    <Property Name="AUTHOR" Type="Int32" />
+    <Property Name="EDITION" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="PUBLISER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PAGE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="IS_STATUS" Type="Boolean" />
+    <NavigationProperty Name="ACTIONs" Relationship="Self.FK_ACTION_BOOK" FromRole="BOOK" ToRole="ACTION" />
+    <NavigationProperty Name="AUTHOR1" Relationship="Self.FK_BOOK_AUTHOR" FromRole="BOOK" ToRole="AUTHOR" />
+    <NavigationProperty Name="CATEGORY" Relationship="Self.FK_BOOK_CATEGORY" FromRole="BOOK" ToRole="CATEGORY" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="CATEGORY_ID" />
+    </Key>
+    <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BOOKs" Relationship="Self.FK_BOOK_CATEGORY" FromRole="CATEGORY" ToRole="BOOK" />
+  </EntityType>
+  <EntityType Name="MEMBER">
+    <Key>
+      <PropertyRef Name="MEMBER_ID" />
+    </Key>
+    <Property Name="MEMBER_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEMBER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MEMBER_SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USER_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FOTO" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="TEL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SCHOOL" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ACTIONs" Relationship="Self.FK_ACTION_MEMBER" FromRole="MEMBER" ToRole="ACTION" />
+    <NavigationProperty Name="PUNISHMENTs" Relationship="Self.FK_PUNISHMENT_MEMBER" FromRole="MEMBER" ToRole="PUNISHMENT" />
+  </EntityType>
+  <EntityType Name="PAY_DESK">
+    <Key>
+      <PropertyRef Name="PAY_DESK_ID" />
+    </Key>
+    <Property Name="PAY_DESK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MONTH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PERSONEL">
+    <Key>
+      <PropertyRef Name="PERSONEL_ID" />
+    </Key>
+    <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PERSONEL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PUNISHMENT">
+    <Key>
+      <PropertyRef Name="PUNISMENT_ID" />
+    </Key>
+    <Property Name="PUNISMENT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MEMBER" Type="Int32" />
+    <Property Name="START" Type="DateTime" Precision="0" />
+    <Property Name="FINISH" Type="DateTime" Precision="0" />
+    <Property Name="MONEY" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ACTION" Type="Int32" />
+    <NavigationProperty Name="ACTION1" Relationship="Self.FK_PUNISHMENT_ACTION" FromRole="PUNISHMENT" ToRole="ACTION" />
+    <NavigationProperty Name="MEMBER1" Relationship="Self.FK_PUNISHMENT_MEMBER" FromRole="PUNISHMENT" ToRole="MEMBER" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_ACTION_BOOK">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="0..1" />
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="BOOK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACTION_MEMBER">
+    <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="0..1" />
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBER">
+        <PropertyRef Name="MEMBER_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="MEMBER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNISHMENT_ACTION">
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="0..1" />
+    <End Role="PUNISHMENT" Type="Self.PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACTION">
+        <PropertyRef Name="ACTION_ID" />
+      </Principal>
+      <Dependent Role="PUNISHMENT">
+        <PropertyRef Name="ACTION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOK_AUTHOR">
+    <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHOR">
+        <PropertyRef Name="AUTHOR_ID" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="AUTHOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOK_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="BOOK_CAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNISHMENT_MEMBER">
+    <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="0..1" />
+    <End Role="PUNISHMENT" Type="Self.PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBER">
+        <PropertyRef Name="MEMBER_ID" />
+      </Principal>
+      <Dependent Role="PUNISHMENT">
+        <PropertyRef Name="MEMBER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LIBRARYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACTIONs" EntityType="Self.ACTION" />
+    <EntitySet Name="AUTHORs" EntityType="Self.AUTHOR" />
+    <EntitySet Name="BOOKs" EntityType="Self.BOOK" />
+    <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+    <EntitySet Name="MEMBERs" EntityType="Self.MEMBER" />
+    <EntitySet Name="PAY_DESK" EntityType="Self.PAY_DESK" />
+    <EntitySet Name="PERSONELs" EntityType="Self.PERSONEL" />
+    <EntitySet Name="PUNISHMENTs" EntityType="Self.PUNISHMENT" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_ACTION_BOOK" Association="Self.FK_ACTION_BOOK">
+      <End Role="BOOK" EntitySet="BOOKs" />
+      <End Role="ACTION" EntitySet="ACTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACTION_MEMBER" Association="Self.FK_ACTION_MEMBER">
+      <End Role="MEMBER" EntitySet="MEMBERs" />
+      <End Role="ACTION" EntitySet="ACTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNISHMENT_ACTION" Association="Self.FK_PUNISHMENT_ACTION">
+      <End Role="ACTION" EntitySet="ACTIONs" />
+      <End Role="PUNISHMENT" EntitySet="PUNISHMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOK_AUTHOR" Association="Self.FK_BOOK_AUTHOR">
+      <End Role="AUTHOR" EntitySet="AUTHORs" />
+      <End Role="BOOK" EntitySet="BOOKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOK_CATEGORY" Association="Self.FK_BOOK_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORies" />
+      <End Role="BOOK" EntitySet="BOOKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNISHMENT_MEMBER" Association="Self.FK_PUNISHMENT_MEMBER">
+      <End Role="MEMBER" EntitySet="MEMBERs" />
+      <End Role="PUNISHMENT" EntitySet="PUNISHMENTs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

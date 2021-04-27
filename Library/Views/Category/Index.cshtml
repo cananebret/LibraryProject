@@ -1,0 +1,27 @@
+﻿@using Library.Models.Entity;
+@model List<CATEGORY>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kategoriler</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori Id</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach(var cat in Model)
+     {
+        <tr>
+            <td>@cat.CATEGORY_ID</td>
+            <td>@cat.CATEGORY_NAME</td>
+            <td><a href="/Category/CatDel/@cat.CATEGORY_ID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Category/CatFind/@cat.CATEGORY_ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+     }
+</table>
+<a href="/Category/CatAdd/" class="btn btn-primary">Yeni Kategori Ekle</a>

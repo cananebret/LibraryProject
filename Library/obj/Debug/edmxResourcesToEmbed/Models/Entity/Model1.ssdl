@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LIBRARYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACTION">
+    <Key>
+      <PropertyRef Name="ACTION_ID" />
+    </Key>
+    <Property Name="ACTION_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BOOK" Type="int" />
+    <Property Name="MEMBER" Type="int" />
+    <Property Name="PERSONNEL" Type="int" />
+    <Property Name="SHIP_DATE" Type="datetime" />
+    <Property Name="RETURN_DATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AUTHOR">
+    <Key>
+      <PropertyRef Name="AUTHOR_ID" />
+    </Key>
+    <Property Name="AUTHOR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AUTHOR_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="AUTHOR_SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="DETAIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BOOK">
+    <Key>
+      <PropertyRef Name="BOOK_ID" />
+    </Key>
+    <Property Name="BOOK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BOOK_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="BOOK_CAT" Type="int" />
+    <Property Name="AUTHOR" Type="int" />
+    <Property Name="EDITION" Type="char" MaxLength="4" />
+    <Property Name="PUBLISER" Type="varchar" MaxLength="50" />
+    <Property Name="PAGE" Type="varchar" MaxLength="4" />
+    <Property Name="IS_STATUS" Type="bit" />
+  </EntityType>
+  <EntityType Name="CATEGORY">
+    <Key>
+      <PropertyRef Name="CATEGORY_ID" />
+    </Key>
+    <Property Name="CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORY_NAME" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MEMBER">
+    <Key>
+      <PropertyRef Name="MEMBER_ID" />
+    </Key>
+    <Property Name="MEMBER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEMBER_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="MEMBER_SURNAME" Type="varchar" MaxLength="50" />
+    <Property Name="MAIL" Type="varchar" MaxLength="50" />
+    <Property Name="USER_NAME" Type="varchar" MaxLength="30" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="50" />
+    <Property Name="FOTO" Type="varchar" MaxLength="320" />
+    <Property Name="TEL" Type="varchar" MaxLength="20" />
+    <Property Name="SCHOOL" Type="varchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="PAY_DESK">
+    <Key>
+      <PropertyRef Name="PAY_DESK_ID" />
+    </Key>
+    <Property Name="PAY_DESK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MONTH" Type="varchar" MaxLength="20" />
+    <Property Name="AMOUNT" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="PERSONEL">
+    <Key>
+      <PropertyRef Name="PERSONEL_ID" />
+    </Key>
+    <Property Name="PERSONEL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PERSONEL_NAME" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="PUNISHMENT">
+    <Key>
+      <PropertyRef Name="PUNISMENT_ID" />
+    </Key>
+    <Property Name="PUNISMENT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MEMBER" Type="int" />
+    <Property Name="START" Type="smalldatetime" />
+    <Property Name="FINISH" Type="smalldatetime" />
+    <Property Name="MONEY" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ACTION" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_ACTION_BOOK">
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="0..1" />
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOK">
+        <PropertyRef Name="BOOK_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="BOOK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACTION_MEMBER">
+    <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="0..1" />
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBER">
+        <PropertyRef Name="MEMBER_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="MEMBER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOK_AUTHOR">
+    <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHOR">
+        <PropertyRef Name="AUTHOR_ID" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="AUTHOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BOOK_CATEGORY">
+    <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="0..1" />
+    <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORY">
+        <PropertyRef Name="CATEGORY_ID" />
+      </Principal>
+      <Dependent Role="BOOK">
+        <PropertyRef Name="BOOK_CAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNISHMENT_ACTION">
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="0..1" />
+    <End Role="PUNISHMENT" Type="Self.PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACTION">
+        <PropertyRef Name="ACTION_ID" />
+      </Principal>
+      <Dependent Role="PUNISHMENT">
+        <PropertyRef Name="ACTION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PUNISHMENT_MEMBER">
+    <End Role="MEMBER" Type="Self.MEMBER" Multiplicity="0..1" />
+    <End Role="PUNISHMENT" Type="Self.PUNISHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBER">
+        <PropertyRef Name="MEMBER_ID" />
+      </Principal>
+      <Dependent Role="PUNISHMENT">
+        <PropertyRef Name="MEMBER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LIBRARYModelStoreContainer">
+    <EntitySet Name="ACTION" EntityType="Self.ACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BOOK" EntityType="Self.BOOK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAY_DESK" EntityType="Self.PAY_DESK" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PUNISHMENT" EntityType="Self.PUNISHMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ACTION_BOOK" Association="Self.FK_ACTION_BOOK">
+      <End Role="BOOK" EntitySet="BOOK" />
+      <End Role="ACTION" EntitySet="ACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACTION_MEMBER" Association="Self.FK_ACTION_MEMBER">
+      <End Role="MEMBER" EntitySet="MEMBER" />
+      <End Role="ACTION" EntitySet="ACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOK_AUTHOR" Association="Self.FK_BOOK_AUTHOR">
+      <End Role="AUTHOR" EntitySet="AUTHOR" />
+      <End Role="BOOK" EntitySet="BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BOOK_CATEGORY" Association="Self.FK_BOOK_CATEGORY">
+      <End Role="CATEGORY" EntitySet="CATEGORY" />
+      <End Role="BOOK" EntitySet="BOOK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNISHMENT_ACTION" Association="Self.FK_PUNISHMENT_ACTION">
+      <End Role="ACTION" EntitySet="ACTION" />
+      <End Role="PUNISHMENT" EntitySet="PUNISHMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PUNISHMENT_MEMBER" Association="Self.FK_PUNISHMENT_MEMBER">
+      <End Role="MEMBER" EntitySet="MEMBER" />
+      <End Role="PUNISHMENT" EntitySet="PUNISHMENT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
