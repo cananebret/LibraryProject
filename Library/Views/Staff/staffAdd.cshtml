@@ -1,0 +1,17 @@
+﻿@model Library.Models.Entity.PERSONEL
+@{
+    ViewBag.Title = "staffAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(p=>p.PERSONEL_NAME, new{@class="form-control"})
+        @Html.ValidationMessageFor(p=>p.PERSONEL_NAME,"",new {@style="color:red" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">Ekle</button>
+    </div>
+</form>

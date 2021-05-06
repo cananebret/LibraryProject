@@ -13,6 +13,9 @@
     <NavigationProperty Name="BOOK1" Relationship="Self.FK_ACTION_BOOK" FromRole="ACTION" ToRole="BOOK" />
     <NavigationProperty Name="MEMBER1" Relationship="Self.FK_ACTION_MEMBER" FromRole="ACTION" ToRole="MEMBER" />
     <NavigationProperty Name="PUNISHMENTs" Relationship="Self.FK_PUNISHMENT_ACTION" FromRole="ACTION" ToRole="PUNISHMENT" />
+    <NavigationProperty Name="PERSONEL" Relationship="LIBRARYModel.FK_ACTION_PERSONEL" FromRole="ACTION" ToRole="PERSONEL" />
+    <Property Name="IS_STATUS" Type="Boolean" DefaultValue="false" />
+    <Property Name="MEMBER_RETURN_DATE" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="AUTHOR">
     <Key>
@@ -35,10 +38,11 @@
     <Property Name="EDITION" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
     <Property Name="PUBLISER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PAGE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-    <Property Name="IS_STATUS" Type="Boolean" />
+    <Property Name="IS_STATUS" Type="Boolean" DefaultValue="true" />
     <NavigationProperty Name="ACTIONs" Relationship="Self.FK_ACTION_BOOK" FromRole="BOOK" ToRole="ACTION" />
     <NavigationProperty Name="AUTHOR1" Relationship="Self.FK_BOOK_AUTHOR" FromRole="BOOK" ToRole="AUTHOR" />
     <NavigationProperty Name="CATEGORY" Relationship="Self.FK_BOOK_CATEGORY" FromRole="BOOK" ToRole="CATEGORY" />
+    <Property Name="BOOK_IMAGE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="CATEGORY">
     <Key>
@@ -78,6 +82,7 @@
     </Key>
     <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PERSONEL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ACTIONs" Relationship="LIBRARYModel.FK_ACTION_PERSONEL" FromRole="PERSONEL" ToRole="ACTION" />
   </EntityType>
   <EntityType Name="PUNISHMENT">
     <Key>
@@ -208,5 +213,21 @@
       <End Role="MEMBER" EntitySet="MEMBERs" />
       <End Role="PUNISHMENT" EntitySet="PUNISHMENTs" />
     </AssociationSet>
+    <AssociationSet Name="FK_ACTION_PERSONEL" Association="LIBRARYModel.FK_ACTION_PERSONEL">
+      <End Role="PERSONEL" EntitySet="PERSONELs" />
+      <End Role="ACTION" EntitySet="ACTIONs" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_ACTION_PERSONEL">
+    <End Type="LIBRARYModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
+    <End Type="LIBRARYModel.ACTION" Role="ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONEL">
+        <PropertyRef Name="PERSONEL_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="PERSONNEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

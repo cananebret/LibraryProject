@@ -10,6 +10,8 @@
     <Property Name="PERSONNEL" Type="int" />
     <Property Name="SHIP_DATE" Type="datetime" />
     <Property Name="RETURN_DATE" Type="datetime" />
+    <Property Name="MEMBER_RETURN_DATE" Type="datetime" />
+    <Property Name="IS_STATUS" Type="bit" />
   </EntityType>
   <EntityType Name="AUTHOR">
     <Key>
@@ -32,6 +34,7 @@
     <Property Name="PUBLISER" Type="varchar" MaxLength="50" />
     <Property Name="PAGE" Type="varchar" MaxLength="4" />
     <Property Name="IS_STATUS" Type="bit" />
+    <Property Name="BOOK_IMAGE" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="CATEGORY">
     <Key>
@@ -114,6 +117,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ACTION_PERSONEL">
+    <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+    <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERSONEL">
+        <PropertyRef Name="PERSONEL_ID" />
+      </Principal>
+      <Dependent Role="ACTION">
+        <PropertyRef Name="PERSONNEL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BOOK_AUTHOR">
     <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
     <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
@@ -178,6 +193,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_ACTION_MEMBER" Association="Self.FK_ACTION_MEMBER">
       <End Role="MEMBER" EntitySet="MEMBER" />
+      <End Role="ACTION" EntitySet="ACTION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACTION_PERSONEL" Association="Self.FK_ACTION_PERSONEL">
+      <End Role="PERSONEL" EntitySet="PERSONEL" />
       <End Role="ACTION" EntitySet="ACTION" />
     </AssociationSet>
     <AssociationSet Name="FK_BOOK_AUTHOR" Association="Self.FK_BOOK_AUTHOR">

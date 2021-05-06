@@ -14,7 +14,16 @@ namespace Library.Models.Entity
     
     public partial class PERSONEL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PERSONEL()
+        {
+            this.ACTIONs = new HashSet<ACTION>();
+        }
+    
         public int PERSONEL_ID { get; set; }
         public string PERSONEL_NAME { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ACTION> ACTIONs { get; set; }
     }
 }

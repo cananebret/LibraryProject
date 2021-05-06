@@ -17,6 +17,7 @@ namespace Library.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BOOK()
         {
+            this.IS_STATUS = true;
             this.ACTIONs = new HashSet<ACTION>();
         }
     
@@ -28,6 +29,7 @@ namespace Library.Models.Entity
         public string PUBLISER { get; set; }
         public string PAGE { get; set; }
         public Nullable<bool> IS_STATUS { get; set; }
+        public string BOOK_IMAGE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ACTION> ACTIONs { get; set; }

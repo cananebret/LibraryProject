@@ -1,0 +1,38 @@
+﻿@model Library.Models.Entity.MEMBER
+@{
+    ViewBag.Title = "staffFind";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("memberUpd", "Member", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MEMBER_ID)
+        @Html.TextBoxFor(m => m.MEMBER_ID, new { @class = "form-control" })
+        <br />
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(m => m.MEMBER_NAME, new { @class = "Form-control" })
+        <br />
+        <label>Üye Soyadı</label>
+        @Html.TextBoxFor(m => m.MEMBER_SURNAME, new { @class = "Form-control" })
+        <br />
+        <label>Mail</label>
+        @Html.TextBoxFor(m => m.MAIL, new { @class = "Form-control" })
+        <br />
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(m => m.USER_NAME, new { @class = "Form-control" })
+        <br />
+        <label>Şifre</label>
+        @Html.TextBoxFor(m => m.PASSWORD, new { @class = "Form-control" })
+        <br />
+        <label>Telefon</label>
+        @Html.TextBoxFor(m => m.TEL, new { @class = "Form-control" })
+        <br />
+        <label>Okul</label>
+        @Html.TextBoxFor(m => m.SCHOOL, new { @class = "Form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

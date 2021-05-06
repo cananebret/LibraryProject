@@ -1,0 +1,42 @@
+﻿@using Library.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MEMBER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Üyeler</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Üye Id</th>
+        <th>Üye Adı</th>
+        <th>Üye Soyadı</th>
+        <th>Mail</th>
+        <th>Kullanıcı Adı</th>
+        <th>Şifre</th>
+        <th>Tel</th>
+        <th>Okul</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach(var m in Model)
+    {
+        <tr>
+            <td>@m.MEMBER_ID </td>
+            <td>@m.MEMBER_NAME </td>
+            <td>@m.MEMBER_SURNAME</td>
+            <td>@m.MAIL</td>
+            <td>@m.USER_NAME</td>
+            <td>@m.PASSWORD</td>
+            <td>@m.TEL</td>
+            <td>@m.SCHOOL</td>
+            <td>@Html.ActionLink("Sil", "memberDel", new { id = m.MEMBER_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
+            <td><a href="/Member/memberFind/@m.MEMBER_ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { }))
+<a href="/Member/memberAdd/" class="btn btn-primary">Yeni Üye Ekle</a>

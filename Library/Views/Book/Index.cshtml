@@ -8,9 +8,14 @@
 
 
 <h2>Kitaplar</h2>
+@using (Html.BeginForm("Index", "Book", FormMethod.Get))
+ {
 <div style="margin-top:15px; margin-bottom:15px;">
-    <input type="text" class="form-control" placeholder="Kitap Ara"/>
+    <b>Aranacak Kitap Adı Giriniz:</b> @Html.TextBox("p")
+    <input type="submit" value="Ara" />
 </div>
+ }
+
 <table class="table table-bordered">
     <tr>
         <th>Id</th>
@@ -35,8 +40,8 @@
             <td>@b.PUBLISER</td>
             <td>@b.PAGE</td>
             <td>@b.IS_STATUS</td>
-            <td>@Html.ActionLink("Sil", "BookDel", new { id = b.BOOK_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
-            <td><a href="/Book/BookFind/@b.BOOK_ID" class="btn btn-success">Güncelle</a></td>
+            <td>@Html.ActionLink("Sil", "bookDel", new { id = b.BOOK_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
+            <td><a href="/Book/bookFind/@b.BOOK_ID" class="btn btn-success">Güncelle</a></td>
         </tr>
     }
 </table>

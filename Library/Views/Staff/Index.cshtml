@@ -1,0 +1,25 @@
+﻿@using Library.Models.Entity
+@model List<PERSONEL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2>Personeller</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Personel Adı</th>        
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.PERSONEL_ID</td>
+            <td>@p.PERSONEL_NAME</td>            
+            <td>@Html.ActionLink("Sil", "staffDel", new { id = p.PERSONEL_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
+            <td><a href="/Staff/staffFind/@p.PERSONEL_ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Staff/staffAdd/" class="btn btn-primary">Yeni Personel Ekle</a>

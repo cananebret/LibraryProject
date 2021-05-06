@@ -81,3 +81,7 @@ C:\Users\Canan EBRET\source\repos\Library\Library\obj\Debug\Library.csproj.CoreC
 C:\Users\Canan EBRET\source\repos\Library\Library\obj\Debug\Library.csproj.CopyComplete
 C:\Users\Canan EBRET\source\repos\Library\Library\obj\Debug\Library.dll
 C:\Users\Canan EBRET\source\repos\Library\Library\obj\Debug\Library.pdb
+C:\Users\Canan EBRET\source\repos\Library\Library\bin\PagedList.dll
+C:\Users\Canan EBRET\source\repos\Library\Library\bin\PagedList.Mvc.dll
+C:\Users\Canan EBRET\source\repos\Library\Library\bin\PagedList.xml
+C:\Users\Canan EBRET\source\repos\Library\Library\bin\PagedList.Mvc.xml

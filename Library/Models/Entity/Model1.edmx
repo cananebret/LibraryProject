@@ -15,6 +15,8 @@
           <Property Name="PERSONNEL" Type="int" />
           <Property Name="SHIP_DATE" Type="datetime" />
           <Property Name="RETURN_DATE" Type="datetime" />
+          <Property Name="MEMBER_RETURN_DATE" Type="datetime" />
+          <Property Name="IS_STATUS" Type="bit" />
         </EntityType>
         <EntityType Name="AUTHOR">
           <Key>
@@ -37,6 +39,7 @@
           <Property Name="PUBLISER" Type="varchar" MaxLength="50" />
           <Property Name="PAGE" Type="varchar" MaxLength="4" />
           <Property Name="IS_STATUS" Type="bit" />
+          <Property Name="BOOK_IMAGE" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="CATEGORY">
           <Key>
@@ -119,6 +122,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ACTION_PERSONEL">
+          <End Role="PERSONEL" Type="Self.PERSONEL" Multiplicity="0..1" />
+          <End Role="ACTION" Type="Self.ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PERSONEL_ID" />
+            </Principal>
+            <Dependent Role="ACTION">
+              <PropertyRef Name="PERSONNEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BOOK_AUTHOR">
           <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
           <End Role="BOOK" Type="Self.BOOK" Multiplicity="*" />
@@ -185,6 +200,10 @@
             <End Role="MEMBER" EntitySet="MEMBER" />
             <End Role="ACTION" EntitySet="ACTION" />
           </AssociationSet>
+          <AssociationSet Name="FK_ACTION_PERSONEL" Association="Self.FK_ACTION_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONEL" />
+            <End Role="ACTION" EntitySet="ACTION" />
+          </AssociationSet>
           <AssociationSet Name="FK_BOOK_AUTHOR" Association="Self.FK_BOOK_AUTHOR">
             <End Role="AUTHOR" EntitySet="AUTHOR" />
             <End Role="BOOK" EntitySet="BOOK" />
@@ -219,6 +238,9 @@
           <NavigationProperty Name="BOOK1" Relationship="Self.FK_ACTION_BOOK" FromRole="ACTION" ToRole="BOOK" />
           <NavigationProperty Name="MEMBER1" Relationship="Self.FK_ACTION_MEMBER" FromRole="ACTION" ToRole="MEMBER" />
           <NavigationProperty Name="PUNISHMENTs" Relationship="Self.FK_PUNISHMENT_ACTION" FromRole="ACTION" ToRole="PUNISHMENT" />
+          <NavigationProperty Name="PERSONEL" Relationship="LIBRARYModel.FK_ACTION_PERSONEL" FromRole="ACTION" ToRole="PERSONEL" />
+          <Property Name="IS_STATUS" Type="Boolean" DefaultValue="false" />
+          <Property Name="MEMBER_RETURN_DATE" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="AUTHOR">
           <Key>
@@ -241,10 +263,11 @@
           <Property Name="EDITION" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
           <Property Name="PUBLISER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PAGE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="IS_STATUS" Type="Boolean" />
+          <Property Name="IS_STATUS" Type="Boolean" DefaultValue="true" />
           <NavigationProperty Name="ACTIONs" Relationship="Self.FK_ACTION_BOOK" FromRole="BOOK" ToRole="ACTION" />
           <NavigationProperty Name="AUTHOR1" Relationship="Self.FK_BOOK_AUTHOR" FromRole="BOOK" ToRole="AUTHOR" />
           <NavigationProperty Name="CATEGORY" Relationship="Self.FK_BOOK_CATEGORY" FromRole="BOOK" ToRole="CATEGORY" />
+          <Property Name="BOOK_IMAGE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CATEGORY">
           <Key>
@@ -284,6 +307,7 @@
           </Key>
           <Property Name="PERSONEL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PERSONEL_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACTIONs" Relationship="LIBRARYModel.FK_ACTION_PERSONEL" FromRole="PERSONEL" ToRole="ACTION" />
         </EntityType>
         <EntityType Name="PUNISHMENT">
           <Key>
@@ -414,7 +438,23 @@
             <End Role="MEMBER" EntitySet="MEMBERs" />
             <End Role="PUNISHMENT" EntitySet="PUNISHMENTs" />
           </AssociationSet>
+          <AssociationSet Name="FK_ACTION_PERSONEL" Association="LIBRARYModel.FK_ACTION_PERSONEL">
+            <End Role="PERSONEL" EntitySet="PERSONELs" />
+            <End Role="ACTION" EntitySet="ACTIONs" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ACTION_PERSONEL">
+          <End Type="LIBRARYModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
+          <End Type="LIBRARYModel.ACTION" Role="ACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONEL">
+              <PropertyRef Name="PERSONEL_ID" />
+            </Principal>
+            <Dependent Role="ACTION">
+              <PropertyRef Name="PERSONNEL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -424,6 +464,8 @@
           <EntitySetMapping Name="ACTIONs">
             <EntityTypeMapping TypeName="LIBRARYModel.ACTION">
               <MappingFragment StoreEntitySet="ACTION">
+                <ScalarProperty Name="MEMBER_RETURN_DATE" ColumnName="MEMBER_RETURN_DATE" />
+                <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
                 <ScalarProperty Name="ACTION_ID" ColumnName="ACTION_ID" />
                 <ScalarProperty Name="BOOK" ColumnName="BOOK" />
                 <ScalarProperty Name="MEMBER" ColumnName="MEMBER" />
@@ -446,6 +488,7 @@
           <EntitySetMapping Name="BOOKs">
             <EntityTypeMapping TypeName="LIBRARYModel.BOOK">
               <MappingFragment StoreEntitySet="BOOK">
+                <ScalarProperty Name="BOOK_IMAGE" ColumnName="BOOK_IMAGE" />
                 <ScalarProperty Name="BOOK_ID" ColumnName="BOOK_ID" />
                 <ScalarProperty Name="BOOK_NAME" ColumnName="BOOK_NAME" />
                 <ScalarProperty Name="BOOK_CAT" ColumnName="BOOK_CAT" />

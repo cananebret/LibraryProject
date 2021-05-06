@@ -11,7 +11,7 @@
         <EntityTypeShape EntityType="LIBRARYModel.CATEGORY" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LIBRARYModel.MEMBER" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="LIBRARYModel.PAY_DESK" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LIBRARYModel.PERSONEL" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LIBRARYModel.PERSONEL" Width="1.5" PointX="8.875" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="LIBRARYModel.PUNISHMENT" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="LIBRARYModel.FK_ACTION_BOOK" ManuallyRouted="false" />
         <AssociationConnector Association="LIBRARYModel.FK_ACTION_MEMBER" ManuallyRouted="false" />
@@ -19,6 +19,7 @@
         <AssociationConnector Association="LIBRARYModel.FK_BOOK_AUTHOR" ManuallyRouted="false" />
         <AssociationConnector Association="LIBRARYModel.FK_BOOK_CATEGORY" ManuallyRouted="false" />
         <AssociationConnector Association="LIBRARYModel.FK_PUNISHMENT_MEMBER" ManuallyRouted="false" />
+        <AssociationConnector Association="LIBRARYModel.FK_ACTION_PERSONEL" />
       </Diagram>
       <Diagram DiagramId="3f3a391a65e94b66a392b5c4b2198c1a" Name="Diagram2" >
         <EntityTypeShape EntityType="LIBRARYModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />

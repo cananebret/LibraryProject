@@ -17,6 +17,7 @@ namespace Library.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ACTION()
         {
+            this.IS_STATUS = false;
             this.PUNISHMENTs = new HashSet<PUNISHMENT>();
         }
     
@@ -26,10 +27,13 @@ namespace Library.Models.Entity
         public Nullable<int> PERSONNEL { get; set; }
         public Nullable<System.DateTime> SHIP_DATE { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }
+        public Nullable<bool> IS_STATUS { get; set; }
+        public Nullable<System.DateTime> MEMBER_RETURN_DATE { get; set; }
     
         public virtual BOOK BOOK1 { get; set; }
         public virtual MEMBER MEMBER1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PUNISHMENT> PUNISHMENTs { get; set; }
+        public virtual PERSONEL PERSONEL { get; set; }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model Library.Models.Entity.ACTION
+@{
+    ViewBag.Title = "lend";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Üye Id</label>
+        @Html.TextBoxFor(k => k.MEMBER, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Id</label>
+        @Html.TextBoxFor(k => k.BOOK, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Personel</label>
+        @Html.TextBoxFor(k => k.PERSONNEL, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Alış Tarihi</label>
+        <input type="text" class="form-control" name="SHIP_DATE" value="@DateTime.Now.ToShortDateString()"/>
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap İade Tarihi</label>
+        <input type="text" class="form-control" name="RETURN_DATE" value="@DateTime.Now.AddDays(7).ToShortDateString()"/>
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-group" style="background-color:aqua">Kitabı ödünç ver</button>
+        @*<input type="hidden"value="false" name="is_status"/>*@  
+        @*sql tarafında otomatik false attıgı icin kapattım burda*@
+    </div>
+</form>

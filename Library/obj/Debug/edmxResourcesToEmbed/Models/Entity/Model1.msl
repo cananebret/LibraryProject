@@ -4,6 +4,8 @@
     <EntitySetMapping Name="ACTIONs">
       <EntityTypeMapping TypeName="LIBRARYModel.ACTION">
         <MappingFragment StoreEntitySet="ACTION">
+          <ScalarProperty Name="MEMBER_RETURN_DATE" ColumnName="MEMBER_RETURN_DATE" />
+          <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
           <ScalarProperty Name="ACTION_ID" ColumnName="ACTION_ID" />
           <ScalarProperty Name="BOOK" ColumnName="BOOK" />
           <ScalarProperty Name="MEMBER" ColumnName="MEMBER" />
@@ -26,6 +28,7 @@
     <EntitySetMapping Name="BOOKs">
       <EntityTypeMapping TypeName="LIBRARYModel.BOOK">
         <MappingFragment StoreEntitySet="BOOK">
+          <ScalarProperty Name="BOOK_IMAGE" ColumnName="BOOK_IMAGE" />
           <ScalarProperty Name="BOOK_ID" ColumnName="BOOK_ID" />
           <ScalarProperty Name="BOOK_NAME" ColumnName="BOOK_NAME" />
           <ScalarProperty Name="BOOK_CAT" ColumnName="BOOK_CAT" />
