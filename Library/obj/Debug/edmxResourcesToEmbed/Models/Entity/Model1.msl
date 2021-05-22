@@ -103,5 +103,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ABOUT_US">
+      <EntityTypeMapping TypeName="LIBRARYModel.ABOUT_US">
+        <MappingFragment StoreEntitySet="ABOUT_US">
+          <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTACTs">
+      <EntityTypeMapping TypeName="LIBRARYModel.CONTACT">
+        <MappingFragment StoreEntitySet="CONTACT">
+          <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+          <ScalarProperty Name="CAPTION" ColumnName="CAPTION" />
+          <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="MAXAUTHORSBOOK" FunctionName="LIBRARYModel.Store.MAXAUTHORSBOOK" />
+    <EntitySetMapping Name="MEM_MESSAGE">
+      <EntityTypeMapping TypeName="LIBRARYModel.MEM_MESSAGE">
+        <MappingFragment StoreEntitySet="MEM_MESSAGE">
+          <ScalarProperty Name="MESSAGE_DATE" ColumnName="MESSAGE_DATE" />
+          <ScalarProperty Name="MESSAGE_CONTENT" ColumnName="MESSAGE_CONTENT" />
+          <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+          <ScalarProperty Name="RECEIVER" ColumnName="RECEIVER" />
+          <ScalarProperty Name="SENDER" ColumnName="SENDER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

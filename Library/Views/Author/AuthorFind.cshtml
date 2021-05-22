@@ -3,6 +3,9 @@
     ViewBag.Title = "AuthorFind";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+<center>
+    <h2 id="bslk">Yazar Güncelle</h2>
+</center>
 
 @using (Html.BeginForm("AuthorUpd", "Author", FormMethod.Post))
 {
@@ -24,7 +27,7 @@
             <label>Detay</label>
             @Html.TextAreaFor(y => y.DETAIL, new { @class = "form-control" })
         </div>
-        <button class="btn btn-warning">Güncelle</button>
+        <button class="btn btn-info" style="background-color: bisque">Güncelle</button>
     </div>
 }
 

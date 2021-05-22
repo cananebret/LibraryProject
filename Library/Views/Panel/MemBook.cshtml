@@ -1,0 +1,28 @@
+﻿@using Library.Models.Entity
+@model List<ACTION>
+
+@{
+    ViewBag.Title = "MemBook";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Kitap Geçmişim</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kitap Adı</th>
+        <th>Alış tarihi</th>
+        <th>Üye İade Tarihi</th>
+    </tr>
+   @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.BOOK1.BOOK_NAME</td>
+            <td>@Convert.ToDateTime(a.SHIP_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@Convert.ToDateTime(a.MEMBER_RETURN_DATE).ToString("dd/MM/yyyy")</td>
+
+        </tr>
+    }
+
+
+</table>

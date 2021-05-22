@@ -24,9 +24,13 @@ namespace Library.Controllers
         [HttpPost]
         public ActionResult AuthorAdd(AUTHOR a)
         {
+            if(!ModelState.IsValid)
+            {
+                return View("AuthorAdd");
+            }
             db.AUTHORs.Add(a);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
         public ActionResult AuthorDel(int id)
         {

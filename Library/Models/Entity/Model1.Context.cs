@@ -12,6 +12,8 @@ namespace Library.Models.Entity
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LIBRARYEntities : DbContext
     {
@@ -34,5 +36,13 @@ namespace Library.Models.Entity
         public virtual DbSet<PERSONEL> PERSONELs { get; set; }
         public virtual DbSet<PUNISHMENT> PUNISHMENTs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ABOUT_US> ABOUT_US { get; set; }
+        public virtual DbSet<CONTACT> CONTACTs { get; set; }
+        public virtual DbSet<MEM_MESSAGE> MEM_MESSAGE { get; set; }
+    
+        public virtual ObjectResult<string> MAXAUTHORSBOOK()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MAXAUTHORSBOOK");
+        }
     }
 }

@@ -1,0 +1,25 @@
+﻿@model Library.Models.Entity.MEM_MESSAGE
+@{
+    ViewBag.Title = "NewMessage";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Mesaj alıcı</label>
+        @Html.TextBoxFor(m => m.RECEIVER, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Konu</label>
+        @Html.TextBoxFor(m => m.SUBJECT, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>İçerik</label>
+        @Html.TextAreaFor(m => m.MESSAGE_CONTENT, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">Gönder</button>
+    </div>
+</form>

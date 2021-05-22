@@ -1,0 +1,26 @@
+﻿@using Library.Models.Entity
+@model List<MEM_MESSAGE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Gönderen</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>İşlem</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.SENDER</td>
+            <td>@m.SUBJECT</td>
+            <td>@m.MESSAGE_CONTENT</td>
+            <td>@m.MESSAGE_DATE</td>
+            
+        </tr>
+    }
+</table>

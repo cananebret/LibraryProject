@@ -22,7 +22,7 @@
         <th>Sil</th>
         <th>Güncelle</th>
     </tr>
-    @foreach(var m in Model)
+    @foreach (var m in Model)
     {
         <tr>
             <td>@m.MEMBER_ID </td>
@@ -38,5 +38,5 @@
         </tr>
     }
 </table>
-@Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new { }))
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Member", new { page }))
 <a href="/Member/memberAdd/" class="btn btn-primary">Yeni Üye Ekle</a>

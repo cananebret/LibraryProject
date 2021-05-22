@@ -4,9 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-
 <h2>Ödünç Kitap Listesi</h2>
-
 <table class="table table-bordered">
     <tr>
         <th>İşlem Id</th>
@@ -26,11 +24,8 @@
           <td>@a.PERSONEL.PERSONEL_NAME</td>
           <td>@Convert.ToDateTime(a.SHIP_DATE).ToString("dd/MM/yyyy")</td>
           <td>@Convert.ToDateTime(a.RETURN_DATE).ToString("dd/MM/yyyy")</td>
-          <td><a href="/Action/lendFind/@a.ACTION_ID" class="btn btn-default" style="background-color:aqua">Kitabı Geri İade Et</a></td>
-        
+          <td><a href="/Action/lendFind/@a.ACTION_ID" class="btn btn-default" style="background-color:aqua">Kitabı Geri İade Et</a></td>        
       </tr>
     }
-
-
 </table>
   

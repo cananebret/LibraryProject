@@ -14,7 +14,7 @@ namespace Library.Controllers
         LIBRARYEntities db = new LIBRARYEntities();
         public ActionResult Index(int page=1)
         {
-            var members = db.MEMBERs.ToList().ToPagedList(page,3);
+            var members = db.MEMBERs.ToList().ToPagedList(page,2);
             return View(members);
         }
         [HttpGet]
@@ -58,6 +58,5 @@ namespace Library.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

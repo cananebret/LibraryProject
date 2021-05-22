@@ -217,6 +217,10 @@
       <End Role="PERSONEL" EntitySet="PERSONELs" />
       <End Role="ACTION" EntitySet="ACTIONs" />
     </AssociationSet>
+    <EntitySet Name="ABOUT_US" EntityType="LIBRARYModel.ABOUT_US" />
+    <EntitySet Name="CONTACTs" EntityType="LIBRARYModel.CONTACT" />
+    <FunctionImport Name="MAXAUTHORSBOOK" ReturnType="Collection(String)" />
+    <EntitySet Name="MEM_MESSAGE" EntityType="LIBRARYModel.MEM_MESSAGE" />
   </EntityContainer>
   <Association Name="FK_ACTION_PERSONEL">
     <End Type="LIBRARYModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
@@ -230,4 +234,33 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="ABOUT_US">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IS_STATUS" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="CONTACT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CAPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MEM_MESSAGE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SENDER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RECEIVER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MESSAGE_CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MESSAGE_DATE" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

@@ -41,7 +41,6 @@ namespace Library.Controllers
                                               }).ToList();
             ViewBag.athdrp = authordrop;
             return View();
-
         }
         [HttpPost]
         public ActionResult bookAdd(BOOK b)
@@ -52,8 +51,7 @@ namespace Library.Controllers
             b.CATEGORY = ktg;
             db.BOOKs.Add(b);
             db.SaveChanges();
-            return RedirectToAction("Index");
-          
+            return RedirectToAction("Index");          
         }
         public ActionResult bookDel(int id)
         {
@@ -96,6 +94,5 @@ namespace Library.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }

@@ -11,7 +11,7 @@
 {
     <div style="margin-bottom:15px"></div>
     <div class="form-group">
-        <label>HAreket Id</label>
+        <label>Hareket Id</label>
         @Html.TextBoxFor(a => a.ACTION_ID, new { @class = "form-control" })
         <br />
         <label>Kitap Ad</label>
@@ -23,18 +23,21 @@
         <label>Personel Adı</label>
         @Html.TextBoxFor(a => a.PERSONEL.PERSONEL_NAME, new { @class = "form-control" })
         <br />
-        <label>Alış Tarihi</label>
+        <label>Kitabı Aldığı Tarihi</label>
         @Html.TextBoxFor(a => a.SHIP_DATE, "{0:dd.MM.yyyy}", new { @class = "form-control" })
         <br />
-        <label>İade Tarihi</label>
+        <label>İade Etmesi Gereken Tarihi</label>
         @Html.TextBoxFor(a => a.RETURN_DATE, "{0:dd.MM.yyyy}", new { @class = "form-control" })
         <br />
         <label>Üyenin Getirdiği Tarih</label>
         <input type="text" class="form-control" name="MEMBER_RETURN_DATE" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+        <label>Geç Gelen Gün Sayısı</label>
+        <input type="text" class="form-control" id="late_date" value="@ViewBag.dgr" />
     </div>
     <div>
         <button class="btn btn-warning">Ödünç Kitabı Geri Al</button>
-    </div>
+    </div>           
 }
 
 
