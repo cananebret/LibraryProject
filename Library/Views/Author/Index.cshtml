@@ -20,6 +20,7 @@
                 <th>Detay</th>
                 <th>Sil</th>
                 <th>Güncelle</th>
+                <th>Yazarın Kitapları</th>
             </tr>
             @foreach (var a in Model)
             {
@@ -30,7 +31,7 @@
                     <td>@a.DETAIL</td>
                     <td>@Html.ActionLink("Sil", "AuthorDel", new { id = a.AUTHOR_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
                     <td><a href="/Author/AuthorFind/@a.AUTHOR_ID" class="btn clr">Güncelle</a></td>
-
+                    <td><a href="/Author/AuthorBook/@a.AUTHOR_ID" class="btn clr">Yazarın Kitapları</a></td>
                 </tr>
             }
         </table>

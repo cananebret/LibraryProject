@@ -1,0 +1,26 @@
+﻿@model Library.Models.Entity.NOTICE
+@{
+    ViewBag.Title = "NoticeFind";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<h2>Duyuru Detay </h2>
+@using (Html.BeginForm("noticeUpd", "Notice", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"></div>
+    <div class="form-group">
+        @Html.LabelFor(n=>n.ID)
+        @Html.TextBoxFor(n=>n.ID, new { @class = "form-control" })
+        <label>Duyuru Kategori</label>
+        @Html.TextBoxFor(n => n.NOTICE_CATEGORY, new { @class = "Form-control" })
+        <br />
+        <label>Duyuru İçerik</label>
+        @Html.TextAreaFor(n => n.NOTICE_CONTENT, new { @class = "Form-control" })
+        <br />
+        <label>Duyuru Tarih</label>
+        @Html.TextBoxFor(n => n.NOTICE_DATE, new { @class = "Form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+

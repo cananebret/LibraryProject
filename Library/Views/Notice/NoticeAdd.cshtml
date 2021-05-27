@@ -1,0 +1,27 @@
+﻿@model Library.Models.Entity.NOTICE
+@{
+    ViewBag.Title = "NoticeAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Duyuru Ekle</h2>
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Duyuru Kategori</label>
+        @Html.TextBoxFor(n => n.NOTICE_CATEGORY, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Duyuru İçerik</label>
+        @Html.TextAreaFor(n => n.NOTICE_CONTENT, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Duyuru Tarih</label>
+        @Html.TextBoxFor(n => n.NOTICE_DATE, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">Ekle</button>
+    </div>
+</form>
+
+

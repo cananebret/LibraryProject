@@ -23,6 +23,8 @@
         <EntityTypeShape EntityType="LIBRARYModel.ABOUT_US" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="LIBRARYModel.CONTACT" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="LIBRARYModel.MEM_MESSAGE" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="LIBRARYModel.NOTICE" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="LIBRARYModel.ADMIN_SET" Width="2.125" PointX="9.375" PointY="3.125" />
       </Diagram>
       <Diagram DiagramId="3f3a391a65e94b66a392b5c4b2198c1a" Name="Diagram2" >
         <EntityTypeShape EntityType="LIBRARYModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" />

@@ -51,6 +51,7 @@
     <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="BOOKs" Relationship="Self.FK_BOOK_CATEGORY" FromRole="CATEGORY" ToRole="BOOK" />
+    <Property Name="IS_STATUS" Type="Boolean" />
   </EntityType>
   <EntityType Name="MEMBER">
     <Key>
@@ -221,6 +222,8 @@
     <EntitySet Name="CONTACTs" EntityType="LIBRARYModel.CONTACT" />
     <FunctionImport Name="MAXAUTHORSBOOK" ReturnType="Collection(String)" />
     <EntitySet Name="MEM_MESSAGE" EntityType="LIBRARYModel.MEM_MESSAGE" />
+    <EntitySet Name="NOTICEs" EntityType="LIBRARYModel.NOTICE" />
+    <EntitySet Name="ADMIN_SET" EntityType="LIBRARYModel.ADMIN_SET" />
   </EntityContainer>
   <Association Name="FK_ACTION_PERSONEL">
     <End Type="LIBRARYModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
@@ -262,5 +265,24 @@
     <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MESSAGE_CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="MESSAGE_DATE" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="NOTICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOTICE_CATEGORY" Type="String" MaxLength="540" FixedLength="false" Unicode="true" />
+    <Property Name="NOTICE_CONTENT" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="NOTICE_DATE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ADMIN_SET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADMIN_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ADMIN_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ADMIN_AUT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ADMIN_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

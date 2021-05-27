@@ -43,6 +43,7 @@
     <EntitySetMapping Name="CATEGORies">
       <EntityTypeMapping TypeName="LIBRARYModel.CATEGORY">
         <MappingFragment StoreEntitySet="CATEGORY">
+          <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
           <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
           <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
         </MappingFragment>
@@ -132,6 +133,27 @@
           <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
           <ScalarProperty Name="RECEIVER" ColumnName="RECEIVER" />
           <ScalarProperty Name="SENDER" ColumnName="SENDER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTICEs">
+      <EntityTypeMapping TypeName="LIBRARYModel.NOTICE">
+        <MappingFragment StoreEntitySet="NOTICE">
+          <ScalarProperty Name="NOTICE_DATE" ColumnName="NOTICE_DATE" />
+          <ScalarProperty Name="NOTICE_CONTENT" ColumnName="NOTICE_CONTENT" />
+          <ScalarProperty Name="NOTICE_CATEGORY" ColumnName="NOTICE_CATEGORY" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADMIN_SET">
+      <EntityTypeMapping TypeName="LIBRARYModel.ADMIN_SET">
+        <MappingFragment StoreEntitySet="ADMIN_SET">
+          <ScalarProperty Name="ADMIN_DESCRIPTION" ColumnName="ADMIN_DESCRIPTION" />
+          <ScalarProperty Name="ADMIN_AUT" ColumnName="ADMIN_AUT" />
+          <ScalarProperty Name="ADMIN_PASSWORD" ColumnName="ADMIN_PASSWORD" />
+          <ScalarProperty Name="ADMIN_NAME" ColumnName="ADMIN_NAME" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

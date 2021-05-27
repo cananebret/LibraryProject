@@ -21,6 +21,7 @@
         <th>Okul</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Alınan Kitaplar</th>
     </tr>
     @foreach (var m in Model)
     {
@@ -35,6 +36,7 @@
             <td>@m.SCHOOL</td>
             <td>@Html.ActionLink("Sil", "memberDel", new { id = m.MEMBER_ID }, new { @class = "btn brn-danger", onclick = "return confirm('Silmek İstiyormusunuz?')" })</td>
             <td><a href="/Member/memberFind/@m.MEMBER_ID" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Member/memberBook/@m.MEMBER_ID" class="btn btn-success">Geçmiş</a></td>
         </tr>
     }
 </table>

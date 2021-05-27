@@ -1,0 +1,37 @@
+﻿@using Library.Models.Entity
+@model List<NOTICE>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    string color = "";
+}
+<h2>Duyurular</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Duyuru No</th>
+        <th>Kategori</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var a in Model)
+    {
+        if (a.NOTICE_CATEGORY == "Yeni Kitap")
+        {
+            color = "bg-info text-white";
+        }
+        else
+        {
+            color = "bg-warning text-white";
+        }
+        <tr class="@color">
+            <td>@a.ID</td>
+            <td >@a.NOTICE_CATEGORY</td>
+            <td>@Convert.ToDateTime(a.NOTICE_DATE).ToString("dd/MM/yyyy")</td>
+            <td><a href="/Notice/NoticeDel/@a.ID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Notice/NoticeFind/@a.ID" class="btn btn-danger">Detay</a></td>
+        </tr>
+    }
+</table>
+<a href="/Notice/NoticeAdd/" class="btn btn-success">Yeni Duyuru Ekle</a>
+

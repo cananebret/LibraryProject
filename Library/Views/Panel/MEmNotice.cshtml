@@ -1,0 +1,25 @@
+﻿@using Library.Models.Entity
+@model List<NOTICE>
+@{
+    ViewBag.Title = "MEmNotice";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<h2>Duyurular</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori</th>
+        <th>Tarih</th>
+        <th>İçerik</th>
+    </tr>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>@a.NOTICE_CATEGORY</td>
+            <td>@Convert.ToDateTime(a.NOTICE_DATE).ToString("dd/MM/yyyy")</td>
+            <td>@a.NOTICE_CONTENT</td>
+        </tr>
+    }
+</table>
+
+

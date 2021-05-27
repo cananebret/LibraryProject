@@ -56,9 +56,12 @@ body {font-family: "Lato", sans-serif;}
         <a href="/Author/Index/"><i class="fa fa-fw fa-pencil"></i> Yazarlar</a>
         <a href="/Member/Index/"><i class="fa fa-fw fa-users"></i> Üyeler</a>
         <a href="/Staff/Index/"><i class="fa fa-fw fa-user"></i> Personeller</a>
+        @if(User.IsInRole("A")) 
+        {
         <a href="/Action/lend/"><i class="fa fa-fw fa-caret-square-o-up"></i> Ödünç Kitap Ver</a>
         <a href="/Action/Index/"><i class="fa fa-fw fa-caret-square-o-down"></i> Ödünç Kitap Al</a>
-        <a href="#contact"><i class="fa fa-fw fa-money"></i> Kasa</a>
+        }
+        <a href="/Notice/Index/"><i class="fa fa-fw fa-bullhorn"></i> Duyurular</a>
         <a href="/Statistics/Index/"><i class="fa fa-fw fa-sort"></i> İstatistikler</a>
         <a href="/Process/Index/"><i class="fa fa-fw fa-dashboard"></i> İşlemler</a>
         <a href="/Statistics/Gallery/"><i class="fa fa-fw fa-file-image-o"></i> Galeri</a>
@@ -66,9 +69,10 @@ body {font-family: "Lato", sans-serif;}
         <a href="/Showcase/Index/"><i class="fa fa-fw fa-gift"></i> Vitrin</a>
         <a href="/Statistics/Weather/"><i class="fa fa-fw fa-cloud"></i> Hava Durumu</a>
         <a href="/Statistics/WeatherCart/"><i class="fa fa-fw fa-cloud-download"></i> Hava Kartları</a>
-        <a href="#contact"><i class="fa fa-fw fa-yelp"></i> Ayarlar</a>
+        <a href="/Graphic/Index/"><i class="fa fa-area-chart"></i> Grafikler</a>
         <a href="/Login/login/"><i class="fa fa-fw fa-handshake-o"></i> Yardım</a>
-        <a href="#contact"><i class="fa fa-fw fa-window-close"></i> Çıkış</a>
+        <a href="/Settings/Index/"><i class="fa fa-fw fa-yelp"></i> Ayarlar</a>
+        <a href="/Panel/LogOut/"><i class="fa fa-fw fa-window-close"></i> Çıkış</a>
 
     </div>
 

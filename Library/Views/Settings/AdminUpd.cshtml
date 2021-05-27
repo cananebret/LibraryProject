@@ -1,0 +1,29 @@
+﻿@model Library.Models.Entity.ADMIN_SET
+@{
+    ViewBag.Title = "AdminUpd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("AdminUpd", "Settings", FormMethod.Post))
+{
+    <div style="margin-bottom :22px"></div>
+    <div class="form-group">
+        <label>Id</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+        <br />
+        <label>Admin Adı</label>
+        @Html.TextBoxFor(k => k.ADMIN_NAME, new { @class = "form-control" })
+        <br />
+        <label>Admin Şifre</label>
+        @Html.TextBoxFor(k => k.ADMIN_PASSWORD, new { @class = "form-control" })
+        <br />
+        <label>Yetki</label>
+        @Html.TextBoxFor(k => k.ADMIN_AUT, new { @class = "form-control" })
+        <label>Açıklama</label>
+        @Html.TextBoxFor(k => k.ADMIN_DESCRIPTION, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+

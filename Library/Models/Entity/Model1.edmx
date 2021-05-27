@@ -26,6 +26,16 @@
           <Property Name="MEMBER_RETURN_DATE" Type="datetime" />
           <Property Name="IS_STATUS" Type="bit" />
         </EntityType>
+        <EntityType Name="ADMIN_SET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADMIN_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADMIN_PASSWORD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADMIN_AUT" Type="char" MaxLength="1" />
+          <Property Name="ADMIN_DESCRIPTION" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="AUTHOR">
           <Key>
             <PropertyRef Name="AUTHOR_ID" />
@@ -55,6 +65,7 @@
           </Key>
           <Property Name="CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORY_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="IS_STATUS" Type="bit" />
         </EntityType>
         <EntityType Name="CONTACT">
           <Key>
@@ -90,6 +101,15 @@
           <Property Name="FOTO" Type="varchar" MaxLength="320" />
           <Property Name="TEL" Type="varchar" MaxLength="20" />
           <Property Name="SCHOOL" Type="varchar" MaxLength="320" />
+        </EntityType>
+        <EntityType Name="NOTICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOTICE_CATEGORY" Type="nvarchar" MaxLength="540" />
+          <Property Name="NOTICE_CONTENT" Type="nvarchar" MaxLength="450" />
+          <Property Name="NOTICE_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="PAY_DESK">
           <Key>
@@ -215,12 +235,14 @@
         <EntityContainer Name="LIBRARYModelStoreContainer">
           <EntitySet Name="ABOUT_US" EntityType="Self.ABOUT_US" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ACTION" EntityType="Self.ACTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADMIN_SET" EntityType="Self.ADMIN_SET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BOOK" EntityType="Self.BOOK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEM_MESSAGE" EntityType="Self.MEM_MESSAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTICE" EntityType="Self.NOTICE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PAY_DESK" EntityType="Self.PAY_DESK" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUNISHMENT" EntityType="Self.PUNISHMENT" Schema="dbo" store:Type="Tables" />
@@ -309,6 +331,7 @@
           <Property Name="CATEGORY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CATEGORY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="BOOKs" Relationship="Self.FK_BOOK_CATEGORY" FromRole="CATEGORY" ToRole="BOOK" />
+          <Property Name="IS_STATUS" Type="Boolean" />
         </EntityType>
         <EntityType Name="MEMBER">
           <Key>
@@ -479,6 +502,8 @@
           <EntitySet Name="CONTACTs" EntityType="LIBRARYModel.CONTACT" />
           <FunctionImport Name="MAXAUTHORSBOOK" ReturnType="Collection(String)" />
           <EntitySet Name="MEM_MESSAGE" EntityType="LIBRARYModel.MEM_MESSAGE" />
+          <EntitySet Name="NOTICEs" EntityType="LIBRARYModel.NOTICE" />
+          <EntitySet Name="ADMIN_SET" EntityType="LIBRARYModel.ADMIN_SET" />
         </EntityContainer>
         <Association Name="FK_ACTION_PERSONEL">
           <End Type="LIBRARYModel.PERSONEL" Role="PERSONEL" Multiplicity="0..1" />
@@ -520,6 +545,25 @@
           <Property Name="SUBJECT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MESSAGE_CONTENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MESSAGE_DATE" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="NOTICE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOTICE_CATEGORY" Type="String" MaxLength="540" FixedLength="false" Unicode="true" />
+          <Property Name="NOTICE_CONTENT" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Name="NOTICE_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ADMIN_SET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADMIN_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADMIN_PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADMIN_AUT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ADMIN_DESCRIPTION" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -569,6 +613,7 @@
           <EntitySetMapping Name="CATEGORies">
             <EntityTypeMapping TypeName="LIBRARYModel.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="IS_STATUS" ColumnName="IS_STATUS" />
                 <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
                 <ScalarProperty Name="CATEGORY_NAME" ColumnName="CATEGORY_NAME" />
               </MappingFragment>
@@ -658,6 +703,27 @@
                 <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
                 <ScalarProperty Name="RECEIVER" ColumnName="RECEIVER" />
                 <ScalarProperty Name="SENDER" ColumnName="SENDER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTICEs">
+            <EntityTypeMapping TypeName="LIBRARYModel.NOTICE">
+              <MappingFragment StoreEntitySet="NOTICE">
+                <ScalarProperty Name="NOTICE_DATE" ColumnName="NOTICE_DATE" />
+                <ScalarProperty Name="NOTICE_CONTENT" ColumnName="NOTICE_CONTENT" />
+                <ScalarProperty Name="NOTICE_CATEGORY" ColumnName="NOTICE_CATEGORY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADMIN_SET">
+            <EntityTypeMapping TypeName="LIBRARYModel.ADMIN_SET">
+              <MappingFragment StoreEntitySet="ADMIN_SET">
+                <ScalarProperty Name="ADMIN_DESCRIPTION" ColumnName="ADMIN_DESCRIPTION" />
+                <ScalarProperty Name="ADMIN_AUT" ColumnName="ADMIN_AUT" />
+                <ScalarProperty Name="ADMIN_PASSWORD" ColumnName="ADMIN_PASSWORD" />
+                <ScalarProperty Name="ADMIN_NAME" ColumnName="ADMIN_NAME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

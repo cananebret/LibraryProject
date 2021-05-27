@@ -21,6 +21,16 @@
     <Property Name="MEMBER_RETURN_DATE" Type="datetime" />
     <Property Name="IS_STATUS" Type="bit" />
   </EntityType>
+  <EntityType Name="ADMIN_SET">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADMIN_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="ADMIN_PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="ADMIN_AUT" Type="char" MaxLength="1" />
+    <Property Name="ADMIN_DESCRIPTION" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="AUTHOR">
     <Key>
       <PropertyRef Name="AUTHOR_ID" />
@@ -50,6 +60,7 @@
     </Key>
     <Property Name="CATEGORY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CATEGORY_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="IS_STATUS" Type="bit" />
   </EntityType>
   <EntityType Name="CONTACT">
     <Key>
@@ -85,6 +96,15 @@
     <Property Name="FOTO" Type="varchar" MaxLength="320" />
     <Property Name="TEL" Type="varchar" MaxLength="20" />
     <Property Name="SCHOOL" Type="varchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="NOTICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOTICE_CATEGORY" Type="nvarchar" MaxLength="540" />
+    <Property Name="NOTICE_CONTENT" Type="nvarchar" MaxLength="450" />
+    <Property Name="NOTICE_DATE" Type="datetime" />
   </EntityType>
   <EntityType Name="PAY_DESK">
     <Key>
@@ -210,12 +230,14 @@
   <EntityContainer Name="LIBRARYModelStoreContainer">
     <EntitySet Name="ABOUT_US" EntityType="Self.ABOUT_US" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ACTION" EntityType="Self.ACTION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADMIN_SET" EntityType="Self.ADMIN_SET" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BOOK" EntityType="Self.BOOK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CONTACT" EntityType="Self.CONTACT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MEM_MESSAGE" EntityType="Self.MEM_MESSAGE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTICE" EntityType="Self.NOTICE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PAY_DESK" EntityType="Self.PAY_DESK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PERSONEL" EntityType="Self.PERSONEL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PUNISHMENT" EntityType="Self.PUNISHMENT" Schema="dbo" store:Type="Tables" />

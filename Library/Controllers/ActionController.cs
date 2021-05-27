@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using Library.Models.Entity;
 namespace Library.Controllers
 {
+    [Authorize(Roles = "A")] /*sadece rolu A olan kisiler gorsun*/
     public class ActionController : Controller
     {
         // GET: Action
-        LIBRARYEntities db = new LIBRARYEntities();
+        LIBRARYEntities db = new LIBRARYEntities();       
         public ActionResult Index() 
         {
             var values = db.ACTIONs.Where(a=>a.IS_STATUS==false).ToList();
@@ -25,7 +26,7 @@ namespace Library.Controllers
                                                 Value = i.MEMBER_ID.ToString()
                                             }).ToList();
             ViewBag.memdrp = memberdop;
-            List<SelectListItem> bookdrop = (from i in db.BOOKs.ToList()
+            List<SelectListItem> bookdrop = (from i in db.BOOKs.Where(b=>b.IS_STATUS== true).ToList()
                                              select new SelectListItem
                                              {
                                                  Text = i.BOOK_NAME,

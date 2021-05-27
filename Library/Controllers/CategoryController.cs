@@ -13,7 +13,7 @@ namespace Library.Controllers
         LIBRARYEntities db = new LIBRARYEntities();
         public ActionResult Index()
         {
-            var values = db.CATEGORies.ToList();
+            var values = db.CATEGORies.Where(v=>v.IS_STATUS==true).ToList();
             return View(values);
         }
         [HttpGet]
@@ -31,7 +31,8 @@ namespace Library.Controllers
         public ActionResult CatDel(int id)
         {
             var Category = db.CATEGORies.Find(id);
-            db.CATEGORies.Remove(Category);
+            // db.CATEGORies.Remove(Category);
+            Category.IS_STATUS = false;
             db.SaveChanges();
             return RedirectToAction("index");
         }

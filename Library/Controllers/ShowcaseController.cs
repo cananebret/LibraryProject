@@ -7,6 +7,7 @@ using Library.Models.Entity;
 using Library.Models.Classes;
 namespace Library.Controllers
 {
+    [AllowAnonymous]
     public class ShowcaseController : Controller
     {
         // GET: Showcas

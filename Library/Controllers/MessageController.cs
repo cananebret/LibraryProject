@@ -36,8 +36,16 @@ namespace Library.Controllers
             m.MESSAGE_DATE = DateTime.Parse(DateTime.Now.ToShortDateString());
             db.MEM_MESSAGE.Add(m);
             db.SaveChanges();
-            return RedirectToAction("Sending", "Message");    
+            return RedirectToAction("Index");    
         }
-
+        public PartialViewResult messagePart()
+        {
+            var mem_mail = (string)Session["mail"].ToString();
+            var inboxCount = db.MEM_MESSAGE.Where(x => x.RECEIVER == mem_mail).Count();
+            ViewBag.inboxC = inboxCount;
+            var SendCount = db.MEM_MESSAGE.Where(x => x.SENDER == mem_mail).Count();
+            ViewBag.SendC = SendCount;
+            return PartialView();
+        }
     }
 }

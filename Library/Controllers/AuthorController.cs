@@ -55,5 +55,12 @@ namespace Library.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult AuthorBook(int id)
+        {
+            var abook = db.BOOKs.Where(a => a.AUTHOR == id).ToList();
+            var authorName = db.AUTHORs.Where(n => n.AUTHOR_ID == id).Select(a => a.AUTHOR_NAME + " " + a.AUTHOR_SURNAME).FirstOrDefault();
+            ViewBag.aname = authorName;
+            return View(abook);
+        }
     }
 }

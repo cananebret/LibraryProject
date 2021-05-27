@@ -39,6 +39,8 @@ namespace Library.Models.Entity
         public virtual DbSet<ABOUT_US> ABOUT_US { get; set; }
         public virtual DbSet<CONTACT> CONTACTs { get; set; }
         public virtual DbSet<MEM_MESSAGE> MEM_MESSAGE { get; set; }
+        public virtual DbSet<NOTICE> NOTICEs { get; set; }
+        public virtual DbSet<ADMIN_SET> ADMIN_SET { get; set; }
     
         public virtual ObjectResult<string> MAXAUTHORSBOOK()
         {

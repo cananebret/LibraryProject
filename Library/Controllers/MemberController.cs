@@ -58,5 +58,14 @@ namespace Library.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult memberBook(int id)
+        {
+            var membook = db.ACTIONs.Where(m => m.MEMBER == id).ToList();
+            var memName = db.MEMBERs.Where(n => n.MEMBER_ID == id).Select(x => x.MEMBER_NAME + " " + x.MEMBER_SURNAME).FirstOrDefault();
+            ViewBag.mName = memName;
+            return View(membook);
+
+
+        }
     }
 }

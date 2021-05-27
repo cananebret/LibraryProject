@@ -1,0 +1,22 @@
+﻿
+@using Library.Models.Entity
+@model List<NOTICE>
+
+<div class="active tab-pane" id="activity">
+    @foreach(var n in Model)
+    {
+    <div class="post">
+        <div class="user-block">
+            <span class="img-circle img-bordered-sm"> <i class="fa fa-fw fa-bullhorn"></i></span>
+            <span class="username">
+                <a href="#">@n.NOTICE_CATEGORY</a>
+                <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+            </span>
+            <span class="description">@n.NOTICE_DATE.ToString()</span>
+        </div>   
+        <p>
+            @n.NOTICE_CONTENT
+        </p>
+    </div>
+    }  
+</div>

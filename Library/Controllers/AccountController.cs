@@ -8,8 +8,9 @@ using System.Web.Security;
 
 namespace Library.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
-    {
+    {      
         // GET: Login
         LIBRARYEntities db = new LIBRARYEntities();
         public ActionResult login()
@@ -23,14 +24,7 @@ namespace Library.Controllers
             if(mem != null)
             {
                 FormsAuthentication.SetAuthCookie(mem.MAIL, false);
-                Session["mail"] = mem.MAIL.ToString();
-                //TempData["id"] = mem.MEMBER_ID.ToString();
-                //TempData["name"] = mem.MEMBER_NAME.ToString();
-                //TempData["surname"] = mem.MEMBER_SURNAME.ToString();
-                //TempData["usern"] = mem.USER_NAME.ToString();
-                //TempData["pass"] = mem.PASSWORD.ToString();
-                //TempData["phone"] = mem.TEL.ToString();
-                //TempData["school"] = mem.SCHOOL.ToString();
+                Session["mail"] = mem.MAIL.ToString();                
                 return RedirectToAction("Index", "Panel");
             }
             else
@@ -38,6 +32,22 @@ namespace Library.Controllers
                 return View();
             }
             
+        }
+        [HttpGet]
+        public ActionResult register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult register(MEMBER m)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("register");
+            }
+            db.MEMBERs.Add(m);
+            db.SaveChanges();
+            return View();
         }
     }
 }
